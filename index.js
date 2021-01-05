@@ -45,6 +45,11 @@ const closeConnection = async (page, browser) => {
 // also works for negative values
 function strToNum(numStr)
 {
+  if (typeof numStr == 'undefined' || !numStr)
+  {
+    return 0;
+  }
+
   const lastChar = numStr.substring(numStr.length-1); // "M"
   let num = Number(numStr.replace(/[^0-9.-]+/g,"")); // 123.45
   
@@ -181,7 +186,7 @@ exports.etfInfo = async (req, res) => {
       }
     }, inceptionLabelText);
 
-    const etfDBResponse = await got(ETFDB_URL + ticker);
+    const etfDBResponse = await got(ETFDB_URL + ticker, {throwHttpErrors: false, retry: 0});
     const $ = cheerio.load(etfDBResponse.body);
 
     const flow5d = strToNum($('.net-fund-flow.5-day').text().trim().split('\n')[1]);
@@ -200,6 +205,7 @@ exports.etfInfo = async (req, res) => {
                                           "5D Flow": flow5d,
                                           "1M Flow": flow1m }));
   } catch (err) {
+    console.log(err.message);
     res.status(500).send(err.message);
   } finally {
     await closeConnection(page, browser);
