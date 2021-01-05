@@ -1,0 +1,9 @@
+{ "dependencies" :
+  { "cheerio" : "latest"
+  , "got" : "latest"
+  , "puppeteer" : "latest"
+  , "puppeteer-extra" : "latest"
+  , "puppeteer-extra-plugin-stealth" : "latest"
+  , "puppeteer-extra-plugin-adblocker" : "latest"
+  }
+}

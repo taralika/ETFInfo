@@ -1,0 +1,1 @@
+gcloud functions deploy etf-info --region us-west2 --entry-point etfInfo --memory 2048MB --timeout 300s --runtime nodejs12 --trigger-http --allow-unauthenticated
