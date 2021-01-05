@@ -1,10 +1,3 @@
-/**
- * Responds to any HTTP request.
- *
- * @param {!express:Request} req HTTP request context.
- * @param {!express:Response} res HTTP response context.
- */
-
 const ETF_URL = "https://www.etf.com/";
 const nameSelector = '.font18.medium_blue_type.w-100.pull-left';
 const segmentSelector = '.field-content.fundReportSegment';
